@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Přihlášení | Moje aplikace</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Login obrazovka (viditelná na začátku) -->
+  <div class="login-container" id="loginScreen">
+    <div class="login-box">
+      <h1>Přihlásit se</h1>
+      <form id="loginForm">
+        <div class="input-group">
+          <label for="username">Uživatelské jméno / email</label>
+          <input type="text" id="username" required placeholder="jan.novak@email.cz">
+        </div>
+        
+        <div class="input-group">
+          <label for="password">Heslo</label>
+          <input type="password" id="password" required placeholder="••••••••">
+        </div>
+
+        <button type="submit">Přihlásit se</button>
+      </form>
+
+      <p class="info">Ještě nemáš účet? <a href="#">Registrace</a></p>
+    </div>
+  </div>
+
+  <!-- Hlavní obsah – skrytý, dokud se nepřihlásíš -->
+  <div class="main-content hidden" id="mainContent">
+  <h1>Vítej zpět!</h1>
+  <p>Jsi přihlášený.</p>
+  <button onclick="logout()">Odhlásit se</button>   <!-- ← musí být onclick="logout()" -->
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>

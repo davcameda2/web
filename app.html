@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Test sticky menu</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: linear-gradient(to bottom, #5e35b1, #311b92);
+      color: white;
+      min-height: 200vh;          /* nutné pro scroll – jinak sticky neuvidíš */
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: linear-gradient(to right, #4527a0, #5e35b1);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    .brand { font-weight: bold; font-size: 1.4rem; }
+    .nav-links a { color: white; margin: 0 20px; text-decoration: none; }
+    .user-section { display: flex; align-items: center; gap: 20px; }
+    .logout-button {
+      background: #d81b60;
+      border: none;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    main { padding: 40px; }
+  </style>
+</head>
+<body>
+
+  <nav class="topbar">
+    <div class="brand">Moje Aplikace</div>
+    <div class="nav-links">
+      <a href="#">Dashboard</a>
+      <a href="#">Statistiky</a>
+      <a href="#">Kontakt</a>
+    </div>
+    <div class="user-section">
+      <span>Přihlášen jako: karel</span>
+      <button class="logout-button" onclick="logout()">Odhlásit se</button>
+
+      <script>
+  // ochrana přihlášení + načtení uživatele
+  if (localStorage.getItem("isLoggedIn") !== "true") {
+    window.location.href = "index.html";
+  }
+
+  const user = localStorage.getItem("currentUser") || "uživatel";
+  document.getElementById("currentUser").textContent = user;
+
+  // ← TADY MUSÍ BÝT FUNKCE logout()
+  function logout() {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("currentUser");
+    window.location.href = "index.html";   // nebo location.replace("index.html")
+  }
+
+  // případně přepínání sekcí...
+</script>
+</body>
+</html>
+
+    </div>
+  </nav>
+
+  <main>
+    <h1>Obsah stránky</h1>
+    <p>Scrolluj dolů a uvidíš, že menu zůstane nahoře přilepené.</p>
+    <!-- hodně obsahu pro scroll -->
+    <p style="height:150vh; background:rgba(255,255,255,0.1);"> </p>
+  </main>
+
+</body>
+</html>
